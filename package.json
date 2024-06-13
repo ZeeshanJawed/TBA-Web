@@ -9,29 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.4",
     "@tryghost/content-api": "^1.11.21",
     "dayjs": "^1.11.11",
     "html-react-parser": "^5.1.10",
     "lazysizes": "^5.3.2",
+    "next": "14.2.4",
     "prismjs": "^1.29.0",
+    "react": "^18",
+    "react-alice-carousel": "^2.9.1",
+    "react-dom": "^18",
     "react-infinite-scroll-component": "^6.1.0",
     "react-loading-skeleton": "^3.4.0",
+    "react-responsive": "^10.0.0",
     "react-slick": "^0.30.2",
     "sass": "^1.77.5",
-    "slick-carousel": "^1.8.1",
-    "react-alice-carousel": "^2.9.1"    
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-slick": "^0.23.13",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "@types/react-slick": "^0.23.13"
-    
+    "typescript": "^5"
   }
 }
