@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 import Image from "next/image";
 import Head from 'next/head';
@@ -37,6 +38,7 @@ import closebtn from './../public/close-btn.svg';
 import star from './../public/start.png';
 import CertificateSlider from "@/component/CertificateSlider";
 import PorfilioSlider from "@/component/PorfilioSlider";
+import React from 'react';
 
 
 const images = [
@@ -83,13 +85,24 @@ const itemVariants = {
 };
 
 const containerVariants = {
-  hidden: {},
+  hidden: { opacity: 1 },
   visible: {
     transition: {
-      staggerChildren: 0.5
+      staggerChildren: 0.3
     }
   }
 };
+
+const buttonVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const textVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 }
+};
+
 
 
 export default function Home() {
@@ -194,14 +207,35 @@ export default function Home() {
         </div>
 
 
-        <div className="text-center py-1 md:py-16 px-4">
+        {/* <div className="text-center py-1 md:py-16 px-4">
 
           <h1 className="text-1xl md:text-4xl font-bold mb-2 md:mb-4">Integration & Automation <span className="text-purple-300">Expert</span></h1>
           <p className="text-[10px] md:text-1xl px-8 mb-5 md:mb-8">Let's redefine efficiency with smart, automated systems that give you back the most valuable resource—time.</p>
           <button className="bg-button-gradient hover:bg-purple-700 text-white font-bold text-[11px] md:text-base py-3 md:py-4 px-6 rounded-full">
             Start Free Trial
           </button>
-        </div>
+        </div> */}
+
+
+        <motion.div
+          className="text-center py-1 md:py-16 px-4"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.h1 className="text-1xl md:text-4xl font-bold mb-2 md:mb-4" variants={textVariants}>
+            Integration & Automation <span className="text-purple-300">Expert</span>
+          </motion.h1>
+          <motion.p className="text-base  px-8 mb-5 md:mb-8" variants={textVariants}>
+            Let's redefine efficiency with smart, automated systems that give <br /> you back the most valuable resource—time.
+          </motion.p>
+          <motion.button
+            className="bg-button-gradient hover:bg-purple-700 text-white font-bold text-[11px] md:text-base py-3 md:py-4 px-6 rounded-full"
+            variants={buttonVariants}
+          >
+            Start Free Trial
+          </motion.button>
+        </motion.div>
 
 
 
@@ -320,79 +354,82 @@ export default function Home() {
 
       <div style={{ backgroundImage: 'url(/bg-bottom.png)' }} className="pt-10">
 
-        <div className="flex items-center justify-center">
+        <AnimatedFadeIn className="flex items-center justify-center">
+
+          {/* <div className="flex items-center justify-center"> */}
           <div className="w-full md:w-1/2 px-10 md:px-0 text-center">
             <h1 className="text-[20px] md:text-4xl font-bold mb-4 text-toolsText">Specialized in Advanced <br />Automation Platforms</h1>
           </div>
-        </div>
+          {/* </div> */}
 
-
-
+        </AnimatedFadeIn>
+        {/* <AnimatedFadeInLeftToRight className=""> */}
         <div className="flex flex-row md:justify-center md:mx-20 px-5 gap-2 md:gap-12 md:pt-20 py-5 overflow-x-scroll  md:w-[unset]" style={{ scrollbarWidth: "none" }}>
-
           <div className="flex flex-col px-5 items-center h-[300px] w-[300px] md:w-[390px] md:h-[350px] rounded-[50px] min-w-[80vw] md:min-w-[unset]"
             style={{ backgroundImage: "linear-gradient(300deg, #181820, #2A2C2E)" }}>
-            <div className="flex w-full p-1 mt-5 items-center justify-start">
+            <StaggeredFadeIn className="">
 
-              <div className="bg-card1 w-12 md:w-16 md:h-16 h-12 rounded-full">
-                <Image src={card1} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
+              <div className="flex w-full p-1 mt-5 items-center justify-start">
+
+                <div className="bg-card1 w-12 md:w-16 md:h-16 h-12 rounded-full">
+                  <Image src={card1} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
+                </div>
+                <div className="md:mx-5 mx-4 md:text-xl font-bold text-left">Task Automation <br />and Workflows</div>
               </div>
-              <div className="md:mx-5 mx-4 md:text-xl font-bold text-left">Task Automation <br />and Workflows</div>
-            </div>
 
-            <div className="text-card4 md:px-4 mt-2 pb-4  text-left font-['Inter'] text-[14px] md:text-[16.5px]">
-              Utilize platforms like  <span className="text-white ml-2 font-bold">make.com</span>, <span className="text-white ml-2 font-bold">Zapier</span>, and<span className="text-white mx-2 font-bold">n8n</span>
-              to automate complex workflows across your applications and services. From enhancing communication between your CRM and email marketing software to synchronizing data <span className='text-purple-400'>more</span>
-            </div>
-
+              <div className="text-card4 md:px-4 mt-2 pb-4  text-left font-['Inter'] text-[14px] md:text-[16.5px]">
+                Utilize platforms like  <span className="text-white ml-2 font-bold">make.com</span>, <span className="text-white ml-2 font-bold">Zapier</span>, and<span className="text-white mx-2 font-bold">n8n</span>
+                to automate complex workflows across your applications and services. From enhancing communication between your CRM and email marketing software to synchronizing data <span className='text-purple-400'>more</span>
+              </div>
+            </StaggeredFadeIn>
           </div>
 
           <div className="flex flex-col px-5 items-center h-[300px] w-[300px]  md:w-[390px] md:h-[350px] rounded-[50px] min-w-[80vw] md:min-w-[unset]"
             style={{ backgroundImage: "linear-gradient(300deg, #25305b, #534185)" }} >
+            <StaggeredFadeIn className="">
+              <div className="flex w-full mt-5 items-center justify-start">
 
-            <div className="flex w-full mt-5 items-center justify-start">
-
-              <div className="bg-card1 md:w-16 md:h-16 w-12 h-12  rounded-full">
-                <Image height={40} width={40} src={card2} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
+                <div className="bg-card1 md:w-16 md:h-16 w-12 h-12  rounded-full">
+                  <Image height={40} width={40} src={card2} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
+                </div>
+                <div className="mx-5 md:text-xl font-bold text-left">AI Integrations</div>
               </div>
-              <div className="mx-5 md:text-xl font-bold text-left">AI Integrations</div>
-            </div>
 
-            <div className="text-card2 md:px-4 mt-2 text-left font-['Inter'] text-[14px] md:text-[16.5px]" >
-              Bring your operations into the age of AI with advanced AI solutions like
-              <span className="text-white mx-2 font-bold">ChatGPT</span>
-              that enhance customer service, process data, and provide insights that drive your business forward. Use AI algorithms that learn and adapt to better serve your business objectives.            </div>
-
+              <div className="text-card2 md:px-4 mt-2 text-left font-['Inter'] text-[14px] md:text-[16.5px]" >
+                Bring your operations into the age of AI with advanced AI solutions like
+                <span className="text-white mx-2 font-bold">ChatGPT</span>
+                that enhance customer service, process data, and provide insights that drive your business forward. Use AI algorithms that learn and adapt to better serve your business objectives.            </div>
+            </StaggeredFadeIn>
           </div>
 
           <div className="flex flex-col px-5 items-center h-[300px] w-[300px] md:w-[390px] md:h-[350px]  rounded-[50px] min-w-[80vw] md:min-w-[unset]"
             style={{ backgroundImage: "linear-gradient(300deg, #181820, #2A2C2E)" }}>
+            <StaggeredFadeIn className="">
+              <div className="flex w-full p-1 mt-5 items-center justify-start">
 
-            <div className="flex w-full p-1 mt-5 items-center justify-start">
-
-              <div className="bg-card3 py-4 px-4 rounded-full">
-                <Image src={card3} alt="Logo" width={50} height={50} />
+                <div className="bg-card3 py-4 px-4 rounded-full">
+                  <Image src={card3} alt="Logo" width={50} height={50} />
+                </div>
+                <div className="mx-5 md:text-xl font-bold text-left">API Development & Integrations</div>
               </div>
-              <div className="mx-5 md:text-xl font-bold text-left">API Development & Integrations</div>
-            </div>
 
-            <div className="text-card4 md:px-4 mt-2 text-left font-['Inter'] text-[14px] md:text-[16.5px]">
-              Harness the power of APIs to create seamless integration, promote robust data exchange between systems and applications, and foster a robust technology framework that can adapt to modern demands.
-            </div>
-
+              <div className="text-card4 md:px-4 mt-2 text-left font-['Inter'] text-[14px] md:text-[16.5px]">
+                Harness the power of APIs to create seamless integration, promote robust data exchange between systems and applications, and foster a robust technology framework that can adapt to modern demands.
+              </div>
+            </StaggeredFadeIn>
           </div>
 
         </div>
+        {/* </AnimatedFadeInLeftToRight> */}
 
-
-        <div className="w-full flex mt-10 items-center justify-center">
+        <AnimatedFadeIn className="w-full flex mt-10 items-center justify-center">
 
           <div className="w-full md:w-1/2 text-center">
             <div className="text-[20px] md:text-4xl font-bold text-toolsText">My Tools of Expertise</div>
             <div className="text-[10px] md:text-sm px-10 md:px-40 mt-5 text-toolsText">With a proven track record in delivering custom automation tools & integrations, We can confidently say that your business process automation is in capable hands</div>
           </div>
 
-        </div>
+        </AnimatedFadeIn>
 
         <div className="mx-5 md:mx-40 my-5 md:my-20 flex flex-wrap items-center justify-center">
           {
@@ -405,50 +442,51 @@ export default function Home() {
         </div>
 
 
+        <AnimatedFadeInLeftToRight className="">
+          <div className="w-full flex flex-col md:flex-row mt-10 items-center justify-center px-8 md:px-40 ">
+            {/* Web */}
+            <div className="hidden md:block">
+              <Image src={zoom} alt="zoom" width={650} height={538} />
+            </div>
+            {/* Mobile */}
+            <div className="block md:hidden  w-full">
+              <Image src={zoom} alt="zoom" className='w-full h-[220px]' />
+            </div>
+            <div className="px-0 md:px-20 md:ml-10 md:items-start mt-10 md:mt-0">
 
-        <div className="w-full flex flex-col md:flex-row mt-10 items-center justify-center px-8 md:px-40 ">
-          {/* Web */}
-          <div className="hidden md:block">
-            <Image src={zoom} alt="zoom" width={650} height={538} />
-          </div>
-          {/* Mobile */}
-          <div className="block md:hidden  w-full">
-            <Image src={zoom} alt="zoom" className='w-full h-[220px]' />
-          </div>
-          <div className="px-0 md:px-20 md:ml-10 md:items-start mt-10 md:mt-0">
+              <div className="text-1xl md:text-3xl text-center md:text-start font-bold text-toolsText">Let's automate a future where every minute counts, and every action drives growth.</div>
 
-            <div className="text-1xl md:text-3xl text-center md:text-start font-bold text-toolsText">Let's automate a future where every minute counts, and every action drives growth.</div>
-
-            <div className="mt-6 md:mt-10 flex items-center  justify-center md:justify-start">
-              <Image src={zoomtext} alt="zoom" width={60} height={60} />
-              <div className="text-toolsText flex ml-2 text-[12px] md:text-base">
-                <div className="font-bold ml-1">$25</div>
-                <div className="ml-1">per</div>
-                <div className="font-bold ml-1">30 min</div>
-                <div className="ml-1">Zoom meeting</div>
+              <div className="mt-6 md:mt-10 flex items-center  justify-center md:justify-start">
+                <Image src={zoomtext} alt="zoom" width={60} height={60} />
+                <div className="text-toolsText flex ml-2 text-[12px] md:text-base">
+                  <div className="font-bold ml-1">$25</div>
+                  <div className="ml-1">per</div>
+                  <div className="font-bold ml-1">30 min</div>
+                  <div className="ml-1">Zoom meeting</div>
 
 
+                </div>
               </div>
+
+              <div className="mt-10 flex items-center justify-center md:justify-start">
+                <button className="bg-button-gradient hover:bg-purple-700 text-white md:w-1/3 w-full py-4 md:py-3 px-6 rounded-full">
+                  Book a consultation
+                </button>
+              </div>
+
+
+
             </div>
-
-            <div className="mt-10 flex items-center justify-center md:justify-start">
-              <button className="bg-button-gradient hover:bg-purple-700 text-white md:w-1/3 w-full py-4 md:py-3 px-6 rounded-full">
-                Book a consultation
-              </button>
-            </div>
-
-
 
           </div>
-
-        </div>
+        </AnimatedFadeInLeftToRight>
 
 
         <div className="w-full flex flex-col mt-10  justify-center">
 
-
-          <div className="md:text-4xl text-xl  text-center font-bold text-toolsText">Portfolio</div>
-
+          <AnimatedFadeIn className="">
+            <div className="md:text-4xl text-xl  text-center font-bold text-toolsText">Portfolio</div>
+          </AnimatedFadeIn>
           <div className="flex items-center justify-center mt-5  w-full portfolio-div">
 
             <PorfilioSlider />
@@ -461,8 +499,11 @@ export default function Home() {
 
         <div className="w-full flex flex-col mt-10  justify-center">
 
+          <AnimatedFadeIn className="">
 
-          <div className="md:text-4xl text-xl text-center font-bold text-toolsText mb-4">Certifications</div>
+            <div className="md:text-4xl text-xl text-center font-bold text-toolsText mb-4">Certifications</div>
+
+          </AnimatedFadeIn>
 
           <div className="mt-5 md:px-20 py-5 border-t border-b border-customGray flex snap-center w-full">
 
@@ -477,97 +518,103 @@ export default function Home() {
 
 
 
-
-        <div className="flex items-center justify-center mt-20">
-          <div className="text-center">
-            <h1 className="md:text-4xl text-xl font-bold mb-4 text-toolsText">Testimonials</h1>
+        <AnimatedFadeIn className="">
+          <div className="flex items-center justify-center mt-16">
+            <div className="text-center">
+              <h1 className="md:text-4xl text-xl font-bold text-toolsText">Testimonials</h1>
+            </div>
           </div>
-        </div>
+
+        </AnimatedFadeIn>
 
 
 
         <div className="flex flex-row md:justify-stretch md:mx-20 px-5 gap-2 md:gap-12 md:pt-20 py-5 overflow-x-scroll md:w-[unset] pb-20" style={{ scrollbarWidth: 'none' }}>
 
           <div className="flex flex-col flex-1 p-8 md:w-[350px] w-[400px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]">
-            <div className="font-bold md:text-xl">Additional Variations of HubSpot Workflow</div>
+            <StaggeredFadeIn className="">
+              <div className="font-bold md:text-xl">Additional Variations of HubSpot Workflow</div>
 
-            <div className="flex mt-5 items-center">
+              <div className="flex mt-5 items-center">
 
-              <div className="flex">
-                <Image src={star} alt="Logo" className="h-4 w-4" />
-                <Image src={star} alt="Logo" className="h-4 w-4 ml-2" />
-                <Image src={star} alt="Logo" className="h-4 w-4 ml-2" />
-                <Image src={star} alt="Logo" className="h-4 w-4 ml-2" />
-                <Image src={star} alt="Logo" className="h-4 w-4 ml-2" />
+                <div className="flex">
+                  <Image src={star} alt="Logo" className="h-4 w-4" />
+                  <Image src={star} alt="Logo" className="h-4 w-4 ml-2" />
+                  <Image src={star} alt="Logo" className="h-4 w-4 ml-2" />
+                  <Image src={star} alt="Logo" className="h-4 w-4 ml-2" />
+                  <Image src={star} alt="Logo" className="h-4 w-4 ml-2" />
+                </div>
+
+                <div className="text-sm ml-5">
+                  5.00
+                </div>
               </div>
 
-              <div className="text-sm ml-5">
-                5.00
+              <div className="text-testimocardText text-[10px] mt-2">
+                May 15, 2024 - May 23, 2024
               </div>
-            </div>
+              <div className="text-testimocardText text-lg mt-2">
+                "We've worked with Justin twice now and he has been excellent both times. An integration and workflow master!"
+              </div>
 
-            <div className="text-testimocardText text-[10px] mt-2">
-              May 15, 2024 - May 23, 2024
-            </div>
-            <div className="text-testimocardText text-lg mt-2">
-              "We've worked with Justin twice now and he has been excellent both times. An integration and workflow master!"
-            </div>
-
-
+            </StaggeredFadeIn>
           </div>
 
 
           <div className="flex flex-col flex-1 p-8 w-[350px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]">
-            <div className="font-bold text-xl">HubSpot Integration Build</div>
+            <StaggeredFadeIn className="">
+              <div className="font-bold text-xl">HubSpot Integration Build</div>
 
-            <div className="flex mt-5 items-center">
+              <div className="flex mt-5 items-center">
 
-              <div className="flex">
-                <Image src={star} alt="Logo" className="h-5 w-5" />
-                <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
-                <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
-                <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
-                <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                <div className="flex">
+                  <Image src={star} alt="Logo" className="h-5 w-5" />
+                  <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                  <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                  <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                  <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                </div>
+
+                <div className="text-sm ml-5">
+                  5.00
+                </div>
               </div>
 
-              <div className="text-sm ml-5">
-                5.00
+              <div className="text-testimocardText text-[10px] mt-2">
+                May 15, 2024 - May 23, 2024
               </div>
-            </div>
-
-            <div className="text-testimocardText text-[10px] mt-2">
-              May 15, 2024 - May 23, 2024
-            </div>
-            <div className="text-testimocardText text-lg mt-5">
-              "Justin is a pleasure to work with and, more importantly, excellent at his work. We had him come in to build a custom HubSpot workflow for a new iPaaS. The…
-            </div>
+              <div className="text-testimocardText text-lg mt-5">
+                "Justin is a pleasure to work with and, more importantly, excellent at his work. We had him come in to build a custom HubSpot workflow for a new iPaaS. The…
+              </div>
+            </StaggeredFadeIn>
           </div>
 
           <div className="flex flex-col flex-1 p-8 w-[350px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]">
+            <StaggeredFadeIn className=''>
+              <div className="font-bold text-xl">Write Ghidra Java script</div>
 
-            <div className="font-bold text-xl">Write Ghidra Java script</div>
+              <div className="flex mt-5 items-center">
 
-            <div className="flex mt-5 items-center">
+                <div className="flex">
+                  <Image src={star} alt="Logo" className="h-5 w-5" />
+                  <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                  <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                  <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                  <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                </div>
 
-              <div className="flex">
-                <Image src={star} alt="Logo" className="h-5 w-5" />
-                <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
-                <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
-                <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
-                <Image src={star} alt="Logo" className="h-5 w-5 ml-2" />
+                <div className="text-sm ml-5">
+                  5.00
+                </div>
               </div>
 
-              <div className="text-sm ml-5">
-                5.00
+              <div className="text-testimocardText text-[10px] mt-2">
+                May 15, 2024 - May 23, 2024
               </div>
-            </div>
-
-            <div className="text-testimocardText text-[10px] mt-2">
-              May 15, 2024 - May 23, 2024
-            </div>
-            <div className="text-testimocardText text-lg mt-5">
-              "Highly recommended, punctual despite differing time zones, ability to learn entirely new tool sets in a quick time with little to no guidance. High…
-            </div>
+              <div className="text-testimocardText text-lg mt-5">
+                "Highly recommended, punctual despite differing time zones, ability to learn entirely new tool sets in a quick time with little to no guidance. High…
+              </div>
+            </StaggeredFadeIn>
 
           </div>
 
@@ -586,3 +633,109 @@ export default function Home() {
     </div >
   );
 }
+
+
+
+const fadeInVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1 } }
+};
+
+const AnimatedFadeIn = ({ children, className }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    } else {
+      controls.start('hidden');
+    }
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={fadeInVariants}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const fadeInLeftToRightVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 1 } }
+};
+
+const AnimatedFadeInLeftToRight = ({ children, className }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    } else {
+      controls.start('hidden');
+    }
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={fadeInLeftToRightVariants}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+
+const containerVariants2 = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.3
+    }
+  }
+};
+
+const itemVariants2 = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
+
+const StaggeredFadeIn = ({ children, className }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    } else {
+      controls.start('hidden');
+    }
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants2}
+      className={className}
+    >
+      {React.Children.map(children, (child, index) => (
+        <motion.div key={index} variants={itemVariants2}>
+          {child}
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};

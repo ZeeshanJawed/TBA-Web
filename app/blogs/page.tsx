@@ -17,7 +17,7 @@ export default async function Index() {
 
     return (
         <div style={{
-            backgroundImage: 'url(/bg-top.png)'
+            backgroundImage: 'url(/bg-top.png)', backgroundSize: "cover"
         }}>
             <Meta settings={settings} />
             <Layout settings={settings}>
