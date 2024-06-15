@@ -5,6 +5,7 @@ const is404 = (error) => /not found/i.test(error.message);
 async function fetchFromGhost(endpoint, params) {
   const url = new URL(`${GHOST_API_URL}/ghost/api/content/${endpoint}/`);
   url.search = new URLSearchParams({ key: GHOST_API_KEY, ...params }).toString();
+  console.log(url.toString(), "This is URL___________")
 
   try {
     const response = await fetch(url);
@@ -46,12 +47,21 @@ export async function getAllPostsForHome(page = 1) {
 export async function getPostAndMorePosts(slug) {
   // get full post
   const singleObjectParams = {
-    slug,
+    // slug,
     include: ["tags", "authors"],
   };
   let post;
   try {
-    post = await fetchFromGhost('posts', singleObjectParams);
+    if (slug) {
+
+      post = await fetchFromGhost(`posts/slug/` + slug, singleObjectParams);
+    }
+
+    else {
+      post = await fetchFromGhost('posts', singleObjectParams);
+    }
+
+
   } catch (error) {
     if (is404(error)) return null;
     throw error;

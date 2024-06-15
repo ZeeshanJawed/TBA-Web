@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 import Image from "next/image";
 import Head from 'next/head';
@@ -76,16 +77,19 @@ const buttonText = [
   "much more!",
 ]
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
 
-// const settings = {
-//   dots: true,
-//   infinite: true,
-//   speed: 500,
-//   slidesToShow: 1,
-//   slidesToScroll: 1
-// };
-
-{/* <Image src={headerImg} alt="Logo" width={40} height={40} /> */ }
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.5
+    }
+  }
+};
 
 
 export default function Home() {
@@ -148,7 +152,7 @@ export default function Home() {
           <div className='flex flex-col gap-3 p-8 pl-12'>
             <div className="my-4"><a href="#" className="text-2xl">Features</a></div>
             <div className="my-4"><a href="#" className="text-2xl">Pricing</a></div>
-            <div className="my-4"><a href="#" className="text-2xl">Blog</a></div>
+            <div className="my-4"><a href="/blogs" className="text-2xl">Blog</a></div>
             <div className="my-4"><a href="#" className="text-2xl">About Us</a></div>
             <div className="my-4"><a href="#" className="text-2xl">Contact</a></div>
           </div>
@@ -180,7 +184,7 @@ export default function Home() {
           <nav className="space-x-6 hidden md:block ">
             <a href="#" className="hover:text-purple-300">Features</a>
             <a href="#" className="hover:text-purple-300">Pricing</a>
-            <a href="#" className="hover:text-purple-300">Blog</a>
+            <a href="/blogs" className="hover:text-purple-300">Blog</a>
             <a href="#" className="hover:text-purple-300">About Us</a>
             <a href="#" className="hover:text-purple-300">Contact</a>
           </nav>
@@ -202,7 +206,7 @@ export default function Home() {
 
 
 
-        <div className="flex flex-col md:flex-row justify-center gap-0 md:gap-8 mt-0 md:mt-10 px-12 md:px-0">
+        {/* <div className="flex flex-col md:flex-row justify-center gap-0 md:gap-8 mt-0 md:mt-10 px-12 md:px-0">
           <div className="flex items-center gap-4 mt-5 md:mt-0">
             <svg className=" h-6 text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15 4.707 11.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l9-9a1 1 0 00-1.414-1.414z" clipRule="evenodd" />
@@ -221,7 +225,34 @@ export default function Home() {
             </svg>
             <span className="text-sm"><span className="font-bold"> TOP 5%  </span>CRM Integration</span>
           </div>
-        </div>
+        </div> */}
+
+
+        <motion.div
+          className="flex flex-col md:flex-row justify-center gap-0 md:gap-8 mt-0 md:mt-10 px-12 md:px-0"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div className="flex items-center gap-4 mt-5 md:mt-0" variants={itemVariants}>
+            <svg className="h-6 text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15 4.707 11.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l9-9a1 1 0 00-1.414-1.414z" clipRule="evenodd" />
+            </svg>
+            <span className="text-sm"><span className="font-bold"> TOP 10% </span> All Upwork</span>
+          </motion.div>
+          <motion.div className="flex items-center gap-4 mt-5 md:mt-0" variants={itemVariants}>
+            <svg className="h-6 text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15 4.707 11.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l9-9a1 1 0 00-1.414-1.414z" clipRule="evenodd" />
+            </svg>
+            <span className="text-sm"><span className="font-bold">TOP 1%  </span> Script & Automation</span>
+          </motion.div>
+          <motion.div className="flex items-center gap-4 mt-5 md:mt-0" variants={itemVariants}>
+            <svg className="h-6 text-purple-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15 4.707 11.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l9-9a1 1 0 00-1.414-1.414z" clipRule="evenodd" />
+            </svg>
+            <span className="text-sm"><span className="font-bold"> TOP 5%  </span>CRM Integration</span>
+          </motion.div>
+        </motion.div>
 
 
 
@@ -303,8 +334,8 @@ export default function Home() {
             style={{ backgroundImage: "linear-gradient(300deg, #181820, #2A2C2E)" }}>
             <div className="flex w-full p-1 mt-5 items-center justify-start">
 
-              <div className="bg-card1 md:py-5 w-12 h-12 md:px-6 rounded-full">
-                <Image src={card1} alt="Logo" height={40} width={40} className='w-6 mx-auto mt-2' />
+              <div className="bg-card1 w-12 md:w-16 md:h-16 h-12 rounded-full">
+                <Image src={card1} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
               </div>
               <div className="md:mx-5 mx-4 md:text-xl font-bold text-left">Task Automation <br />and Workflows</div>
             </div>
@@ -321,8 +352,8 @@ export default function Home() {
 
             <div className="flex w-full mt-5 items-center justify-start">
 
-              <div className="bg-card1 md:py-5 w-12 h-12 md:px-6 rounded-full">
-                <Image src={card2} alt="Logo" className="md:h-8 md:w-7 w-6 mx-auto mt-2" />
+              <div className="bg-card1 md:w-16 md:h-16 w-12 h-12  rounded-full">
+                <Image height={40} width={40} src={card2} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
               </div>
               <div className="mx-5 md:text-xl font-bold text-left">AI Integrations</div>
             </div>

@@ -22,7 +22,7 @@ export default function MorePost({ initialPosts, initialMeta }) {
   const getMorePost = async () => {
     const result = await getPostFromAPI(meta.pagination.next);
     // set new post and new meta
-    setPosts((post) => post.concat(result.posts));
+    setPosts((post) => post.concat(result.posts.posts));
     setMeta(result.meta);
   };
 

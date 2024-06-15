@@ -16,13 +16,15 @@ export default async function Index() {
     const morePosts = allPosts.posts.slice(1);
 
     return (
-        <>
+        <div style={{
+            backgroundImage: 'url(/bg-top.png)'
+        }}>
             <Meta settings={settings} />
             <Layout settings={settings}>
-                <Intro title={settings.title} description={settings.description} />
+                <Intro title={settings.settings.title} description={settings.settings.description} />
                 {heroPost && <HeroPost post={heroPost} />}
                 {morePosts.length > 0 && <MorePost initialPosts={morePosts} initialMeta={postMeta} />}
             </Layout>
-        </>
+        </div>
     );
 }

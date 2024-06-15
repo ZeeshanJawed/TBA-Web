@@ -32,19 +32,15 @@ export default async function Page({ params }) {
     const { slug } = params
     const { post, morePosts, settings, notFound: notFoundError } = await fetchPostData(slug)
 
-    console.log(post, "Get Post and__________")
-    console.log(morePosts, "More {Post} and__________")
-    console.log(slug, "Slug__________")
-
-    if (notFoundError || !post?.slug) return notFound()
+    if (notFoundError || !post.posts[0]?.slug) return notFound()
 
     return (
         <>
             <Meta article={post} settings={settings} />
             <Layout settings={settings}>
                 <article className="border-b border-accent-2 pb-16 mb-16">
-                    <PostHeader post={post} />
-                    <PostBody content={post.html} settings={settings} />
+                    <PostHeader post={post.posts[0]} />
+                    <PostBody content={post.posts[0].html} settings={settings} />
                 </article>
                 {morePosts.length > 0 && <PostMore posts={morePosts} />}
             </Layout>

@@ -3,7 +3,7 @@ import Image from "next/image"
 import { Facebook, Twitter } from "../icons"
 
 const Footer = ({ settings }) => {
-  const logo = settings?.icon || settings.defaultSettings.siteIcon
+  const logo = settings.settings?.icon || settings.defaultSettings.siteIcon
   const { twitter, facebook, title } = settings
   return (
     <footer className="text-gray-600 body-font border-t">
