@@ -641,7 +641,7 @@ const fadeInVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 1 } }
 };
 
-const AnimatedFadeIn = ({ children, className }) => {
+const AnimatedFadeIn = ({ children, className }: any) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
 
@@ -671,7 +671,7 @@ const fadeInLeftToRightVariants = {
   visible: { opacity: 1, x: 0, transition: { duration: 1 } }
 };
 
-const AnimatedFadeInLeftToRight = ({ children, className }) => {
+const AnimatedFadeInLeftToRight = ({ children, className }: any) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
 
@@ -711,7 +711,7 @@ const itemVariants2 = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 };
 
-const StaggeredFadeIn = ({ children, className }) => {
+const StaggeredFadeIn = ({ children, className }: any) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
 

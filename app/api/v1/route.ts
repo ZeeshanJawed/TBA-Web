@@ -1,6 +1,6 @@
 import { getAllPostsForHome, getAllPostsWithSlug, getAllSettings, getPostAndMorePosts } from "../../lib/api";
 import { NextRequest, NextResponse } from "next/server";
-export async function GET(req, res) {
+export async function GET(req: any, res: any) {
 
   const ghost = req?.query?.ghost
   let data

@@ -1,9 +1,10 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 import { getAllPostsForHome } from "../../../lib/api"
+import { NextApiRequest, NextApiResponse } from "next"
 
-export async function GET(req, res) {
+export async function GET(req: any, res: any) {
 
-    const page = req?.query?.page || 1
+    const page: any = req?.query?.page || 1
     // return all post for home page
     const data = await getAllPostsForHome(page)
 

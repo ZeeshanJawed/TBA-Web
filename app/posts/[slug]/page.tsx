@@ -11,12 +11,12 @@ import { PostSkeleton } from '../../components/skeleton'
 export async function generateStaticParams() {
     const allPosts = await getAllPostsWithSlug()
     console.log(allPosts, "Alll______Posts")
-    return allPosts.posts.map((post) => ({ slug: post.slug }))
+    return allPosts.posts.map((post: any) => ({ slug: post.slug }))
 }
 
-async function fetchPostData(slug) {
+async function fetchPostData(slug: any) {
     try {
-        const { post, morePosts } = await getPostAndMorePosts(slug)
+        const { post, morePosts }: any = await getPostAndMorePosts(slug)
         const settings = await getAllSettings()
         return {
             post,
@@ -28,14 +28,14 @@ async function fetchPostData(slug) {
     }
 }
 
-export default async function Page({ params }) {
+export default async function Page({ params }: any) {
     const { slug } = params
     const { post, morePosts, settings, notFound: notFoundError } = await fetchPostData(slug)
 
     if (notFoundError || !post.posts[0]?.slug) return notFound()
 
     return (
-        <>
+        <div style={{ backgroundImage: 'url(/bg-top.png)', backgroundSize: "cover" }}>
             <Meta article={post} settings={settings} />
             <Layout settings={settings}>
                 <article className="border-b border-accent-2 pb-16 mb-16">
@@ -44,6 +44,6 @@ export default async function Page({ params }) {
                 </article>
                 {morePosts.length > 0 && <PostMore posts={morePosts} />}
             </Layout>
-        </>
+        </div>
     )
 }
