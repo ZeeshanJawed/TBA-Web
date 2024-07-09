@@ -9,7 +9,7 @@ export default function Avatar({ name, picture }) {
             src={`${picture}?auto=format,compress,enhance&w=100&h=100`}
             layout="fill"
             className="rounded-full"
-            alt={name}
+            alt={name || "name"}
           />
         )}
       </div>

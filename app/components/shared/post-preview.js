@@ -4,8 +4,6 @@ import Image from "next/image"
 
 export default function PostPreview({ post }) {
   const { title, published_at, custom_excerpt, excerpt, slug, reading_time } = post
-
-  console.log(post)
   return (
     <div className="border-b my-4">
       <h3 className="text-2xl mb-3 leading-snug">
@@ -19,7 +17,7 @@ export default function PostPreview({ post }) {
       </div>
       <div className="flex flex-row gap-2">
         <p className="hidden md:block text-lg leading-relaxed mb-4">{custom_excerpt || excerpt}</p>
-        <Image alt={post.feature_image_alt} src={post.feature_image} width={200} height={200} />
+        <Image alt={post.feature_image_alt || "img-post"} src={post.feature_image} width={200} height={200} />
       </div>
     </div>
   )
