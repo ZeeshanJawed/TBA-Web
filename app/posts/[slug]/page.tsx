@@ -10,7 +10,6 @@ import { PostSkeleton } from '../../components/skeleton'
 
 export async function generateStaticParams() {
     const allPosts = await getAllPostsWithSlug()
-    console.log(allPosts, "Alll______Posts")
     return allPosts.posts.map((post: any) => ({ slug: post.slug }))
 }
 

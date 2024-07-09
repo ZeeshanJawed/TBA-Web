@@ -7,7 +7,7 @@ import Layout from '../components/layouts/layout';
 import Meta from '../components/meta/meta';
 import { getAllPostsForHome, getAllSettings } from '../lib/api';
 
-export default async function Index() {
+async function Index() {
     const allPosts = (await getAllPostsForHome()) || [];
     const settings = await getAllSettings();
     const postMeta = allPosts.meta || {};
@@ -28,3 +28,5 @@ export default async function Index() {
         </div>
     );
 }
+
+export default Index;

@@ -5,7 +5,6 @@ const is404 = (error) => /not found/i.test(error.message);
 async function fetchFromGhost(endpoint, params) {
   const url = new URL(`${GHOST_API_URL}/ghost/api/content/${endpoint}/`);
   url.search = new URLSearchParams({ key: GHOST_API_KEY, ...params }).toString();
-  console.log(url.toString(), "This is URL___________")
 
   try {
     const response = await fetch(url);
