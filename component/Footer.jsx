@@ -13,10 +13,18 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row mt-5 md:mt-0">
                     <div className="flex items-center justify-center">
                         <div className="text-[12px] md:text-sm">Follow me:</div>
-                        <Image src={facebook} className="ml-5" alt="zoom" width={30} height={30} />
-                        <Image src={twitter} className="ml-2" alt="zoom" width={30} height={30} />
-                        <Image src={instagram} className="ml-2" alt="zoom" width={30} height={30} />
-                        <Image src={linkedin} className="ml-2" alt="zoom" width={30} height={30} />
+                        <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+                            <Image src={facebook} className="cursor-pointer ml-5" alt="zoom" width={30} height={30} />
+                        </a>
+                        <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+                            <Image src={twitter} className="cursor-pointer ml-2" alt="zoom" width={30} height={30} />
+                        </a>
+                        <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+                            <Image src={instagram} className="cursor-pointer ml-2" alt="zoom" width={30} height={30} />
+                        </a>
+                        <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+                            <Image src={linkedin} className="cursor-pointer ml-2" alt="zoom" width={30} height={30} />
+                        </a>
                     </div>
 
                     <div className="flex items-center justify-between h-5 mt-5 md:mt-0">

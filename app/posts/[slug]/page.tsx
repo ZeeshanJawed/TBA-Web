@@ -34,7 +34,10 @@ export default async function Page({ params }: any) {
     if (notFoundError || !post.posts[0]?.slug) return notFound()
 
     return (
-        <div style={{ backgroundImage: 'url(/bg-top.png)', backgroundSize: "cover" }}>
+        <div
+            className='bg-gradient-blog1'
+        // style={{ backgroundImage: 'url(/bg-top.png)', backgroundSize: "cover" }}
+        >
             <Meta article={post} settings={settings} />
             <Layout settings={settings}>
                 <article className="border-b border-accent-2 pb-16 mb-16">

@@ -163,16 +163,16 @@ export default function Home() {
 
 
           <div className='flex flex-col gap-3 p-8 pl-12'>
-            <div className="my-4"><a href="#" className="text-2xl">Features</a></div>
+            <div className="my-4"><a href="#feature" className="text-2xl">Features</a></div>
             <div className="my-4"><a href="#" className="text-2xl">Pricing</a></div>
             <div className="my-4"><a href="/blogs" className="text-2xl">Blog</a></div>
-            <div className="my-4"><a href="#" className="text-2xl">About Us</a></div>
+            <div className="my-4"><a href="#about-us" className="text-2xl">About Us</a></div>
             <div className="my-4"><a href="#" className="text-2xl">Contact</a></div>
           </div>
           <hr style={{ backgroundColor: '#56525F !important' }} />
           <div className='w-full flex'>
             <button className="mt-8 bg-button-gradient text-white text-xs py-4 w-3/4 mx-auto text-center rounded-full">
-              Start Free Trial
+              Contact
             </button>
           </div>
 
@@ -195,10 +195,10 @@ export default function Home() {
 
 
           <nav className="space-x-6 hidden md:block ">
-            <a href="#" className="hover:text-purple-300">Features</a>
+            <a href="#feature" className="hover:text-purple-300">Features</a>
             <a href="#" className="hover:text-purple-300">Pricing</a>
             <a href="/blogs" className="hover:text-purple-300">Blog</a>
-            <a href="#" className="hover:text-purple-300">About Us</a>
+            <a href="#about-us" className="hover:text-purple-300">About Us</a>
             <a href="#" className="hover:text-purple-300">Contact</a>
           </nav>
           <button className="bg-button-gradient hover:bg-purple-700 text-white font-bold text-[8px] md:text-base py-1 md:py-2 px-3 md:px-6 rounded-full ">
@@ -233,7 +233,7 @@ export default function Home() {
             className="bg-button-gradient hover:bg-purple-700 text-white font-bold text-[11px] md:text-base py-3 md:py-4 px-6 rounded-full"
             variants={buttonVariants}
           >
-            Start Free Trial
+            Contact
           </motion.button>
         </motion.div>
 
@@ -289,6 +289,7 @@ export default function Home() {
         </motion.div>
 
 
+        <div id="feature"></div>
 
         <div className="flex py-5 md:py-20 mx-4 md:mx-20 items-center justify-center">
 
@@ -365,60 +366,63 @@ export default function Home() {
         </AnimatedFadeIn>
         {/* <AnimatedFadeInLeftToRight className=""> */}
         <div className="flex flex-row md:justify-center md:mx-20 px-5 gap-2 md:gap-12 md:pt-20 py-5 overflow-x-scroll  md:w-[unset]" style={{ scrollbarWidth: "none" }}>
-          <div className="flex flex-col px-5 items-center h-[300px] w-[300px] md:w-[390px] md:h-[350px] rounded-[50px] min-w-[80vw] md:min-w-[unset]"
-            style={{ backgroundImage: "linear-gradient(300deg, #181820, #2A2C2E)" }}>
-            <StaggeredFadeIn className="">
+          <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+            <div className="cursor-pointer flex flex-col px-5 items-center h-[300px] w-[300px] md:w-[390px] md:h-[350px] rounded-[50px] min-w-[80vw] md:min-w-[unset]"
+              style={{ backgroundImage: "linear-gradient(300deg, #181820, #2A2C2E)" }}>
+              <StaggeredFadeIn className="">
 
-              <div className="flex w-full p-1 mt-5 items-center justify-start">
+                <div className="flex w-full p-1 mt-5 items-center justify-start">
 
-                <div className="bg-card1 w-12 md:w-16 md:h-16 h-12 rounded-full">
-                  <Image src={card1} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
+                  <div className="bg-card1 w-12 md:w-16 md:h-16 h-12 rounded-full">
+                    <Image src={card1} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
+                  </div>
+                  <div className="md:mx-5 mx-4 md:text-xl font-bold text-left">Task Automation <br />and Workflows</div>
                 </div>
-                <div className="md:mx-5 mx-4 md:text-xl font-bold text-left">Task Automation <br />and Workflows</div>
-              </div>
 
-              <div className="text-card4 md:px-4 mt-2 pb-4  text-left font-['Inter'] text-[14px] md:text-[16.5px]">
-                Utilize platforms like  <span className="text-white ml-2 font-bold">make.com</span>, <span className="text-white ml-2 font-bold">Zapier</span>, and<span className="text-white mx-2 font-bold">n8n</span>
-                to automate complex workflows across your applications and services. From enhancing communication between your CRM and email marketing software to synchronizing data <span className='text-purple-400'>more</span>
-              </div>
-            </StaggeredFadeIn>
-          </div>
-
-          <div className="flex flex-col px-5 items-center h-[300px] w-[300px]  md:w-[390px] md:h-[350px] rounded-[50px] min-w-[80vw] md:min-w-[unset]"
-            style={{ backgroundImage: "linear-gradient(300deg, #25305b, #534185)" }} >
-            <StaggeredFadeIn className="">
-              <div className="flex w-full mt-5 items-center justify-start">
-
-                <div className="bg-card1 md:w-16 md:h-16 w-12 h-12  rounded-full">
-                  <Image height={40} width={40} src={card2} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
+                <div className="text-card4 md:px-4 mt-2 pb-4  text-left font-['Inter'] text-[14px] md:text-[16.5px]">
+                  Utilize platforms like  <span className="text-white ml-2 font-bold">make.com</span>, <span className="text-white ml-2 font-bold">Zapier</span>, and<span className="text-white mx-2 font-bold">n8n</span>
+                  to automate complex workflows across your applications and services. From enhancing communication between your CRM and email marketing software to synchronizing data <span className='text-purple-400'>more</span>
                 </div>
-                <div className="mx-5 md:text-xl font-bold text-left">AI Integrations</div>
-              </div>
+              </StaggeredFadeIn>
+            </div>
+          </a>
+          <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+            <div className="cursor-pointer flex flex-col px-5 items-center h-[300px] w-[300px]  md:w-[390px] md:h-[350px] rounded-[50px] min-w-[80vw] md:min-w-[unset]"
+              style={{ backgroundImage: "linear-gradient(300deg, #25305b, #534185)" }} >
+              <StaggeredFadeIn className="">
+                <div className="flex w-full mt-5 items-center justify-start">
 
-              <div className="text-card2 md:px-4 mt-2 text-left font-['Inter'] text-[14px] md:text-[16.5px]" >
-                Bring your operations into the age of AI with advanced AI solutions like
-                <span className="text-white mx-2 font-bold">ChatGPT</span>
-                that enhance customer service, process data, and provide insights that drive your business forward. Use AI algorithms that learn and adapt to better serve your business objectives.            </div>
-            </StaggeredFadeIn>
-          </div>
-
-          <div className="flex flex-col px-5 items-center h-[300px] w-[300px] md:w-[390px] md:h-[350px]  rounded-[50px] min-w-[80vw] md:min-w-[unset]"
-            style={{ backgroundImage: "linear-gradient(300deg, #181820, #2A2C2E)" }}>
-            <StaggeredFadeIn className="">
-              <div className="flex w-full p-1 mt-5 items-center justify-start">
-
-                <div className="bg-card3 py-4 px-4 rounded-full">
-                  <Image src={card3} alt="Logo" width={50} height={50} />
+                  <div className="bg-card1 md:w-16 md:h-16 w-12 h-12  rounded-full">
+                    <Image height={40} width={40} src={card2} alt="Logo" className='mx-auto mt-2 w-6 md:w-9' />
+                  </div>
+                  <div className="mx-5 md:text-xl font-bold text-left">AI Integrations</div>
                 </div>
-                <div className="mx-5 md:text-xl font-bold text-left">API Development & Integrations</div>
-              </div>
 
-              <div className="text-card4 md:px-4 mt-2 text-left font-['Inter'] text-[14px] md:text-[16.5px]">
-                Harness the power of APIs to create seamless integration, promote robust data exchange between systems and applications, and foster a robust technology framework that can adapt to modern demands.
-              </div>
-            </StaggeredFadeIn>
-          </div>
+                <div className="text-card2 md:px-4 mt-2 text-left font-['Inter'] text-[14px] md:text-[16.5px]" >
+                  Bring your operations into the age of AI with advanced AI solutions like
+                  <span className="text-white mx-2 font-bold">ChatGPT</span>
+                  that enhance customer service, process data, and provide insights that drive your business forward. Use AI algorithms that learn and adapt to better serve your business objectives.            </div>
+              </StaggeredFadeIn>
+            </div>
+          </a>
+          <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+            <div className="cursor-pointer flex flex-col px-5 items-center h-[300px] w-[300px] md:w-[390px] md:h-[350px]  rounded-[50px] min-w-[80vw] md:min-w-[unset]"
+              style={{ backgroundImage: "linear-gradient(300deg, #181820, #2A2C2E)" }}>
+              <StaggeredFadeIn className="">
+                <div className="flex w-full p-1 mt-5 items-center justify-start">
 
+                  <div className="bg-card3 py-4 px-4 rounded-full">
+                    <Image src={card3} alt="Logo" width={50} height={50} />
+                  </div>
+                  <div className="mx-5 md:text-xl font-bold text-left">API Development & Integrations</div>
+                </div>
+
+                <div className="text-card4 md:px-4 mt-2 text-left font-['Inter'] text-[14px] md:text-[16.5px]">
+                  Harness the power of APIs to create seamless integration, promote robust data exchange between systems and applications, and foster a robust technology framework that can adapt to modern demands.
+                </div>
+              </StaggeredFadeIn>
+            </div>
+          </a>
         </div>
         {/* </AnimatedFadeInLeftToRight> */}
 
@@ -434,13 +438,16 @@ export default function Home() {
         <div className="mx-5 md:mx-40 my-5 md:my-20 flex flex-wrap items-center justify-center">
           {
             buttonText.map((text, index) => (
-              <button key={index} className="bg-buttongrp-gradient m-1 md:m-2 text-[10px] md:text-sm text-black font-bold py-1.5 md:py-2 px-3 md:px-4 rounded-md">
-                {text}
-              </button>
+              <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+                <button key={index} className="bg-buttongrp-gradient m-1 md:m-2 text-[10px] md:text-sm text-black font-bold py-1.5 md:py-2 px-3 md:px-4 rounded-md">
+                  {text}
+                </button>
+              </a>
             ))
           }
         </div>
 
+        <div id='about-us'></div>
 
         <AnimatedFadeInLeftToRight className="">
           <div className="w-full flex flex-col md:flex-row mt-10 items-center justify-center px-8 md:px-40 ">
@@ -450,7 +457,7 @@ export default function Home() {
             </div>
             {/* Mobile */}
             <div className="block md:hidden  w-full">
-              <Image src={zoom} alt="zoom" className='w-full h-[220px]' />
+              <Image src={zoom} alt="zoom" className='w-full h-[220px] object-contain' />
             </div>
             <div className="px-0 md:px-20 md:ml-10 md:items-start mt-10 md:mt-0">
 
@@ -531,10 +538,10 @@ export default function Home() {
 
         <div className="flex flex-row md:justify-stretch md:mx-20 px-5 gap-2 md:gap-12 md:pt-20 py-5 overflow-x-scroll md:w-[unset] pb-20" style={{ scrollbarWidth: 'none' }}>
 
-          <div className="flex flex-col flex-1 p-8 md:w-[350px] w-[400px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]">
+          <a className="cursor-pointer flex flex-col flex-1 p-8 md:w-[350px] w-[400px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]" href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+            {/* <div className="cursor-pointer flex flex-col flex-1 p-8 md:w-[350px] w-[400px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]"> */}
             <StaggeredFadeIn className="">
               <div className="font-bold md:text-xl">Additional Variations of HubSpot Workflow</div>
-
               <div className="flex mt-5 items-center">
 
                 <div className="flex">
@@ -558,10 +565,11 @@ export default function Home() {
               </div>
 
             </StaggeredFadeIn>
-          </div>
+            {/* </div> */}
+          </a>
+          <a href="http://www.example.com" className="cursor-pointer flex flex-col flex-1 p-8 w-[350px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]" target="_blank" rel="noopener noreferrer">
 
-
-          <div className="flex flex-col flex-1 p-8 w-[350px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]">
+            {/* <div className="cursor-pointer flex flex-col flex-1 p-8 w-[350px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]"> */}
             <StaggeredFadeIn className="">
               <div className="font-bold text-xl">HubSpot Integration Build</div>
 
@@ -587,9 +595,10 @@ export default function Home() {
                 "Justin is a pleasure to work with and, more importantly, excellent at his work. We had him come in to build a custom HubSpot workflow for a new iPaaS. The…
               </div>
             </StaggeredFadeIn>
-          </div>
-
-          <div className="flex flex-col flex-1 p-8 w-[350px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]">
+            {/* </div> */}
+          </a>
+          <a className="cursor-pointer flex flex-col flex-1 p-8 w-[350px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]" href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+            {/* <div className="cursor-pointer flex flex-col flex-1 p-8 w-[350px]  rounded-[40px] bg-testimoCard min-w-[80vw] md:min-w-[unset]"> */}
             <StaggeredFadeIn className=''>
               <div className="font-bold text-xl">Write Ghidra Java script</div>
 
@@ -616,12 +625,14 @@ export default function Home() {
               </div>
             </StaggeredFadeIn>
 
-          </div>
+            {/* </div> */}
+          </a>
+
 
 
         </div>
 
-      </div>
+      </div >
 
 
 

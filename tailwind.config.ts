@@ -13,6 +13,8 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
+        "gradient-blog": "linear-gradient(90deg, #d8b4f0, #001a2d)",
+        'gradient-blog1': 'linear-gradient(to left, #350757, #410a6a, #4d0e7f, #591293, #6517a9, #6717ad, #6916b1, #6b16b5, #6310a8, #5b0a9b, #53048e, #4b0082);',
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         'custom-gradient': 'linear-gradient(135deg, #3b0764 0%, #1a0933 100%)',
         'buttongrp-gradient': 'linear-gradient(0deg, #DBC3FA 0%, #EEEAF5 100%)',

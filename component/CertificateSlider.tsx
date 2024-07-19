@@ -19,7 +19,19 @@ export default function CertificateSlider() {
         speed: 500,
         slidesToShow: isMobile ? 1 : 3,
         slidesToScroll: isMobile ? 1 : 3,
-        arrows: false,
+        arrows: true,
+
+        // className: "center",
+        // centerMode: true,
+        // infinite: true,
+        // centerPadding: "50px",
+        // slidesToShow: 1,
+        // slidesToScroll: 1,
+        // speed: 1000,
+        // autoplaySpeed: 5000,
+        // arrows: true,
+        // dots: false,
+        // autoplay: true,
 
     };
 
@@ -31,7 +43,9 @@ export default function CertificateSlider() {
 
                 <div>
                     <div className="flex w-[400px]">
-                        <Image src={certifiImg1} alt="Logo" width={100} height={100} />
+                        <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+                            <Image className="cursor-pointer" src={certifiImg1} alt="Logo" width={100} height={100} />
+                        </a>
 
                         <div className="pl-5 flex flex-col items-start">
                             <div className="text-toolsText text-1xl">Make Intermediate Certificate</div>
@@ -55,8 +69,9 @@ export default function CertificateSlider() {
                 </div>
                 <div>
                     <div className="flex w-[400px]">
-                        <Image src={certifiImg2} alt="Logo" width={100} height={100} />
-
+                        <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+                            <Image className="cursor-pointer" src={certifiImg2} alt="Logo" width={100} height={100} />
+                        </a>
                         <div className="pl-5 flex flex-col items-start">
                             <div className="text-toolsText text-1xl">Make Intermediate Certificate</div>
                             <div className="mt-3">
@@ -79,8 +94,9 @@ export default function CertificateSlider() {
                 </div>
                 <div>
                     <div className="flex w-[400px]">
-                        <Image src={certifiImg1} alt="Logo" width={100} height={100} />
-
+                        <a href="http://www.example.com" target="_blank" rel="noopener noreferrer">
+                            <Image className="cursor-pointer" src={certifiImg1} alt="Logo" width={100} height={100} />
+                        </a>
                         <div className="pl-5 flex flex-col items-start">
                             <div className="text-toolsText text-1xl">Make Intermediate Certificate</div>
                             <div className="mt-3">

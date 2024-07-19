@@ -30,12 +30,15 @@ function PorfilioSlider() {
     const settings = {
         className: "center",
         centerMode: true,
-        infinite: false,
+        infinite: true,
         centerPadding: "50px",
         slidesToShow: 1,
-        speed: 500,
-        arrows: false,
+        slidesToScroll: 1,
+        speed: 1000,
+        autoplaySpeed: 5000,
+        arrows: true,
         dots: false,
+        autoplay: true,
         // nextArrow: <NextArrow />,
         // prevArrow: <PrevArrow />
     };

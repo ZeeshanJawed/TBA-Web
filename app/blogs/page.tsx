@@ -16,9 +16,11 @@ async function Index() {
     const morePosts = allPosts.posts.slice(1);
 
     return (
-        <div style={{
-            backgroundImage: 'url(/bg-top.png)', backgroundSize: "cover"
-        }}>
+        <div
+            className='bg-gradient-blog1'
+        // style={{ backgroundImage: 'url(/bg-top.png)', backgroundSize: "cover" }}
+        // style={{ backgroundImage: 'url(/bg-top.png)', backgroundSize: "cover" }}
+        >
             <Meta settings={settings} />
             <Layout settings={settings}>
                 <Intro title={settings.settings.title} description={settings.settings.description} />
